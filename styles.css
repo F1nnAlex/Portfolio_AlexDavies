@@ -1,0 +1,338 @@
+/* =========================================================
+   Shared styles (used across all pages: Home, Projects, About Me)
+   ========================================================= */
+
+:root {
+  --bg: #0d0e1a;          /* dark navy background */
+  --bg-alt: #161829;      /* slightly lighter panel background */
+  --text: #ecedf5;        /* main text */
+  --muted: #a2a5bd;       /* secondary text */
+  --accent: #b3186f;      /* dark magenta accent */
+  --accent-light: #e23e9c;/* brighter magenta for hover states */
+  --accent-blue: #5b7cfa; /* dark blue accent, used for intermediate skill tier */
+  --border: #262a45;      /* subtle border colour */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+a {
+  color: var(--accent-light);
+}
+
+h1, h2, h3 {
+  color: var(--text);
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.site-nav a {
+  text-align: center;
+  padding: 0.6rem 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--text);
+  border-color: var(--accent-light);
+}
+
+.site-nav a.active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Footer */
+.site-footer {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer a,
+.site-footer p {
+  color: var(--muted);
+  margin: 0;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--accent-light);
+}
+
+/* Buttons (shared) */
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  background: var(--accent-light);
+}
+
+/* Small button variant, used inside cards */
+.button.small {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.9rem;
+}
+
+/* Card grid (used on Home and Projects). Flexbox + wrap + centering
+   means a leftover row (e.g. 1 card left after 2 fill a row) is
+   centered instead of stretching to fill the full width. */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 1 240px;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--accent-light);
+}
+
+.card p {
+  color: var(--muted);
+  flex-grow: 1;
+}
+
+
+/* =========================================================
+   Main page styles
+   ========================================================= */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 5rem 0;
+}
+
+.hero-photo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-photo img {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--bg-alt);
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 0.5rem;
+}
+
+.hero-text p {
+  color: var(--muted);
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* Stack the photo above the text on narrow screens */
+@media (max-width: 700px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.intro {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.featured-projects {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.featured-projects h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Featured project cards, sized 15% bigger than the shared .card default */
+.featured-projects .cards {
+  gap: 1.725rem;
+}
+
+.featured-projects .card {
+  flex-basis: 276px;
+  padding: 1.725rem;
+  font-size: 1.15rem;
+}
+
+
+/* =========================================================
+   Projects page styles
+   ========================================================= */
+
+.projects-intro {
+  text-align: center;
+  padding: 3rem 0 2rem;
+}
+
+.projects-intro p {
+  color: var(--muted);
+}
+
+/* Project cards, sized 25% bigger than the shared .card default */
+.project-list .cards {
+  gap: 1.875rem;
+}
+
+.project-list .card {
+  flex-basis: 300px;
+  padding: 1.875rem;
+  font-size: 1.25rem;
+}
+
+
+/* =========================================================
+   About Me page styles
+   ========================================================= */
+
+.about-intro {
+  padding: 3rem 0 1rem;
+}
+
+.about-intro p {
+  color: var(--muted);
+}
+
+.skills {
+  padding: 1rem 0 2rem;
+  border-top: 1px solid var(--border);
+}
+
+/* One group per skill tier (Beginner / Intermediate / Expert) */
+.skill-tier {
+  margin-bottom: 1.5rem;
+}
+
+.skill-tier h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.skill-tier ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skill-tier li {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  color: var(--text);
+}
+
+/* Tier colour coding */
+.skill-tier.expert h3 {
+  color: var(--accent-light);
+}
+
+.skill-tier.expert li {
+  border-color: var(--accent);
+}
+
+.skill-tier.intermediate h3 {
+  color: var(--accent-blue);
+}
+
+.skill-tier.intermediate li {
+  border-color: var(--accent-blue);
+}
+
+.skill-tier.beginner h3 {
+  color: var(--muted);
+}
+
+.skill-tier.beginner li {
+  border-color: var(--border);
+}
